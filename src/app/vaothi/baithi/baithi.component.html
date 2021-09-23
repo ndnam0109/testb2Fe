@@ -1,0 +1,156 @@
+<div *ngIf="!ketthuc" class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-7">
+
+            <h1 class="my-4">Đề thi</h1>
+
+            <!-- Blog Post -->
+            <div *ngFor="let item of listQuestion ">
+                <div id={{item.stt}} class="card mb-4">
+                    <p><b>Câu {{item.stt}}</b></p>
+                    <img [(src)]="item.thumbnail" class="card-img-top" alt="Card image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-5 right-bar">
+
+            <!-- Search Widget -->
+            <!-- Categories Widget -->
+            <div class="card  answer">
+                <h5 class="card-header">Thời gian :
+                    <countdown #cd1 [config]="{leftTime: 1320, demand: false}"></countdown>
+                    <button data-toggle="modal" data-target="#ketqua" data-backdrop="static" data-keyboard="false" class="btn btn-success" (click)="submit(formTest)" (click)="cd1.stop()">Kết thúc</button>
+                    <!-- routerLink="//testB2/vao-thi/ket-qua" routerLinkActive="active" -->
+                </h5>
+                <div class="card-body">
+
+                    <div class="col-12">
+                        <form #formTest="ngForm" novalidate>
+                            <div class="row">
+                                <div class=" checkbox" *ngFor="let item of listQuestion" [ngStyle]="{'background-color':item.status === 'true' ? '#81F781' : 'white' }" (click)="scroll(item.stt)">
+                                    <div class="check" (change)=changeCheck(item)>
+                                        <strong class="text-center number-answer  ">{{item.stt}}</strong>
+
+                                        <label class="pull-left">
+                                            <div class="text-center form-group">1
+                                            <input ngModel  value="1" name="answer{{item.stt}}" type="radio"  >
+                                        </div>
+                                        </label>
+                                        <label class="pull-left ">
+                                            <div class="text-center form-group">2
+                                            <input  ngModel value="2" name="answer{{item.stt}}" type="radio"  >
+                                        </div>
+                                        </label>
+                                        <label class="pull-left">
+                                            <div class="text-center form-group">3
+                                            <input ngModel value="3" name="answer{{item.stt}}" type="radio"  >
+                                        </div>
+                                        </label>
+                                        <label class="pull-left">
+                                            <div class="text-center form-group ">4
+                                            <input ngModel value="4"   name="answer{{item.stt}}" type="radio"  >
+                                        </div>
+                                        </label>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Side Widget -->
+        </div>
+    </div>
+
+    <div class="modal fade" id="ketqua" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ketqua">Kết quả</h5>
+                </div>
+                <div class="modal-body">
+                    <p *ngIf="ketqua">Kết quả: Đạt</p>
+                    <p *ngIf="!ketqua">Kết quả: Không đạt</p>
+                    <p>Số câu trả lời đúng : {{trueAnswer}}</p>
+                    <p> Số câu trả lời sai : {{failAnswer}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="dapan()">Đáp án</button>
+                    <button type="button" class="btn btn-danger" routerLink="//testB2/vao-thi" routerLinkActive="active" data-dismiss="modal">Thi lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="ketthuc" class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h1 class="my-4">Đề thi</h1>
+
+            <!-- Blog Post -->
+            <div *ngFor="let item of listQuestion ">
+                <div id={{item.stt}} class="card mb-4">
+                    <p><b>Câu {{item.stt}}</b></p>
+                    <img [(src)]="item.thumbnailAnswer" class="card-img-top" alt="Card image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4 right-bar">
+
+            <!-- Search Widget -->
+            <!-- Categories Widget -->
+            <div class="card  answer">
+                <h5 class="card-header">Đáp án
+
+                </h5>
+
+                <div class="card-body">
+
+                    <div class="col-12">
+
+                        <div class="row">
+                            <div class=" checkbox" [ngStyle]="{'background-color':item.answer == item.userAnswer ? '#81F781' : '#F78181' }" *ngFor="let item of listQuestion" (click)="scroll(item.stt)">
+                                <div class="check">
+                                    <span class="text-center pull-left  number-answer"><strong>{{item.stt}}</strong></span>
+                                    <label class="pull-left">
+                                            <div class="text-center form-group">1
+                                            <input  type="radio"  [checked]="item.userAnswer==1"  >
+                                        </div>
+                                        </label>
+                                    <label class="pull-left ">
+                                            <div class="text-center form-group">2
+                                            <input  type="radio" [checked]="item.userAnswer==2"   >
+                                        </div>
+                                        </label>
+                                    <label class="pull-left">
+                                            <div class="text-center form-group">3
+                                            <input  type="radio" [checked]="item.userAnswer==3" >
+                                        </div>
+                                        </label>
+                                    <label class="pull-left">
+                                            <div class="text-center form-group ">4
+                                            <input type="radio" [checked]="item.userAnswer==4" >
+                                            </div>
+                                        </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Side Widget -->
+        </div>
+    </div>
+</div>
+<!-- /.row -->

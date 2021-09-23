@@ -1,0 +1,48 @@
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="text-center">
+
+                    <p class="text-center">Check your email <br/> And confirm the token</p>
+                    <div class="panel-body">
+
+                        <form (ngSubmit)="forgotPassword(formForgot)" #formForgot="ngForm" novalidate>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon reset"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                    <input ngModel name="token" placeholder="Token" class="form-control" type="text">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon reset"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                    <input [(ngModel)]="password" name="newPassword" placeholder="New password" class="form-control" type="password">
+                                </div>
+                                <div class="row">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                        <input [(ngModel)]="confirmPassword" name="passwordConfirm" placeholder="Confirm password" class="form-control" type="password" (keyup)="confirm()">
+                                    </div>
+                                    <div class="confirm-input">
+                                        <i *ngIf="confirmPass===false" class="far fa-times-circle text-center" style="color: red;"></i>
+                                        <i *ngIf="confirmPass==true" class="far fa-check-circle text-center" style="color: #64FE2E;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <!-- Button -->
+                                <div class="controls">
+                                    <button class="btn btn-success" [disabled]="!formForgot.valid">Reset</button>
+                                </div>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

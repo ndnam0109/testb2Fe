@@ -1,0 +1,49 @@
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .checkbox {
+        border: 2px solid #566963;
+        width: 100px;
+        height: 40px;
+        border-radius: 10px;
+        margin-bottom: 3px;
+        cursor: pointer;
+    }
+    
+    .number-answer {
+        font-size: 12px;
+        float: left;
+        margin-top: 5px;
+    }
+    
+    .pull-left {
+        width: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-bottom: 0;
+        line-height: 16px;
+    }
+    
+    .pull-right {
+        width: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-bottom: 0;
+        line-height: 16px;
+    }
+    
+    .btn-success {
+        float: right;
+        ;
+    }
+    
+    .answer {
+        position: fixed;
+        width: 450px;
+    }
+    
+    .right-bar {
+        position: relative;
+        min-height: 100%;
+    }

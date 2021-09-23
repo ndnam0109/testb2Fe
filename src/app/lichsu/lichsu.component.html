@@ -1,0 +1,78 @@
+<div class="container">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h1 class="my-4">History</h1>
+
+            <!-- Blog Post -->
+            <div class="card mb-4">
+
+                <div class="card-body">
+                    <div class="table">
+                        <table class="talbe bg-whit">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th></th>
+                                    <th>Kết quả</th>
+                                    <th>Số câu đúng</th>
+                                    <th>Ngày</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listHistory">
+                                    <td>{{item.stt}}</td>
+                                    <td class="align-middle">
+                                        <div *ngIf="item.status==true" class="badge badge-success">Đạt</div>
+                                        <div *ngIf="item.status==false" class="badge badge-danger">Không đạt</div>
+                                    </td>
+                                    <td>{{item.soCauDung}}</td>
+                                    <td>{{item.dateTest | date :'dd-MM-yyyy h:mm:ss a '}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Blog Post -->
+
+        </div>
+
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="pipe">
+                <div class="anchor" id="id_anchor"></div>
+                <div class="content" id="id_content">
+
+
+
+
+                    <!-- Side Widget -->
+                    <div class="card my-4">
+                        <h5 class="card-header">Thống kê</h5>
+                        <div class="card-body">
+                            <ul>
+                                <li>Tổng số lần thi: <b>{{soLanThi}}</b></li>
+                                <li>Số lần thi đạt: <b>{{thiDat}}</b></li>
+                                <li>Số lần thi không đạt: <b>{{thiTruot}}</b></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>

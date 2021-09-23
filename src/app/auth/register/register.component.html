@@ -1,0 +1,68 @@
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Register</h3>
+
+                </div>
+                <div class="card-body">
+                    <form class="form-horizontal" #f="ngForm" (ngSubmit)="onRegister()" novalidate>
+
+                        <div class="control-group">
+                            <!-- Username -->
+                            <label class="control-label" for="username">Username</label>
+                            <div class="controls">
+                                <input type="text" id="username" name="username" placeholder="" [(ngModel)]="userName" class="input-xlarge" required>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Username -->
+                            <label class="control-label" for="email">Gmail</label>
+                            <div class="controls">
+                                <input type="email" id="email" name="username" placeholder="" [(ngModel)]="email" class="input-xlarge" required>
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <!-- Password-->
+                            <label class="control-label" for="password">Password</label>
+                            <div class="controls">
+                                <input type="password" id="password" name="password" placeholder="" [(ngModel)]="password" class="input-xlarge" required>
+                            </div>
+                        </div>
+
+                        <div class="control-group ">
+                            <!-- Password-->
+                            <label class="control-label" for="passwordConfirm"> Confirm Password</label>
+                            <div class="row">
+                                <div class="controls">
+                                    <input type="password" id="passwordConfirm" name="password" placeholder="" [(ngModel)]="passwordConfirm" class="input-xlarge" (keyup)="confirm()" required>
+                                </div>
+
+                                <div class="confirm-input">
+                                    <i *ngIf="confirmPass===false" class="far fa-times-circle text-center" style="color: red;"></i>
+                                    <i *ngIf="confirmPass==true" class="far fa-check-circle text-center" style="color: #64FE2E;"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="control-group">
+                            <!-- Button -->
+                            <div class="controls">
+                                <button class="btn btn-success" [disabled]="!f.valid">Register</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>

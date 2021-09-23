@@ -1,0 +1,19 @@
+.category {
+    width: 280px;
+}
+
+.list-unstyled li b {
+    cursor: pointer;
+}
+
+.cate-active {
+    color: darkgoldenrod;
+}
+
+.list-unstyled li :hover {
+    color: darkgoldenrod;
+}
+
+.right-bar {
+    position: fixed;
+}
